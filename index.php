@@ -1,7 +1,10 @@
 <html><body>
-
 <?php
-
+/* 
+This is a web interface to access the battleship boards.
+It uses mysql_real_escape to prevent sql injection.
+Please don't hack me. :)
+*/
 
 
 $username="battleship";

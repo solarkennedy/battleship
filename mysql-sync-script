@@ -1,2 +1,3 @@
 #!/bin/bash
-mysqldump -u root -pwoodall42 battleship | mysql -u xkyle_battleship -pree7Go7I -h mysql.xkyle.com xkyle_battleship
+set -vx
+mysqldump -u root battleship | mysql -u xkyle_battleship -pree7Go7I -h mysql.xkyle.com xkyle_battleship

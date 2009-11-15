@@ -22,17 +22,17 @@ ConnectToDB();
 
 //int A=0;
 for (A=0; A<64; A++){
-	for (B=2; B<64; B++){
-		for (C=4; C<64; C++){
-			for (D=6; D<64; D++){
-				for (E=14; E<64; E++){
+	for (B=0; B<64; B++){
+		for (C=0; C<64; C++){
+			for (D=0; D<64; D++){
+				for (E=0; E<64; E++){
 					printf("Status: %i %i %i %i %i\n", A,B,C,D,E);
-					for (F=18; F<64; F++){
+					for (F=0; F<64; F++){
 //						if ( A!=B && A!=C && A!=D && A!=E && A!=F && B!=C && B!=D && B!=E && B!=F && C!=D && C!=E && C!=F && D!=E && D!=F && E!=F)
 						for (G=0; G<64; G++){
 							for (H=0; H<64; H++){
 								for (I=0; I<64; I++){
-									printf("Status: %i %i %i %i %i %i %i %i %i\n", A,B,C,D,E,F,G,H,I);
+									//printf("Status: %i %i %i %i %i %i %i %i %i\n", A,B,C,D,E,F,G,H,I);
 									for (J=0; J<64; J++){
 											ZeroArray();
 											if (PlaceDestroyer(A,0)==1)
@@ -384,6 +384,8 @@ int PrintBoard()
 				hcounter[V] += 1;
 			}
 			boardstring[V*8+H] = board[H][V] + 48;
+	                if (boardstring[V*8+H] == 48)
+        	                boardstring[V*8+H] = 49;
 		}
 		printf("\n");
 	}	

@@ -140,6 +140,8 @@ int PrintBoard()
 				hcounter[V] += 1;
 			}
 			boardstring[V*6+H] = board[H][V] + 48;
+			if (boardstring[V*6+H] == 48)
+				boardstring[V*6+H] = 49;
 		}
 		printf("\n");
 	}	

@@ -17,7 +17,7 @@ MYSQL_ROW row;
 int main()
 {
 int A, B, C, D, E, F;
-ConnectToDB();
+//ConnectToDB();
 //int A=0;
 for (A=0; A<36; A++){
 	for (B=0; B<36; B++){
@@ -150,9 +150,10 @@ int PrintBoard()
 	printf("The horizontal sum is: %s\n", vcounter);
 	printf("The vertical sum is: %s\n", hcounter);
 	char querystring[256];
-	snprintf(querystring, sizeof(querystring), "REPLACE INTO `battleship`.`6x6` (`board` ,`h` ,`v`)VALUES ('%s', '%s', '%s');", boardstring, hcounter, vcounter);
+/*	snprintf(querystring, sizeof(querystring), "REPLACE INTO `battleship`.`6x6` (`board` ,`h` ,`v`)VALUES ('%s', '%s', '%s');", boardstring, hcounter, vcounter);
 	if (mysql_query(conn, querystring)) 
 	      fprintf(stderr, "%s\n", mysql_error(conn));
+*/
 	printf("\n\n");
 }
 
@@ -361,3 +362,4 @@ int ConnectToDB(){
    printf("Done..\n");
 
 }
+

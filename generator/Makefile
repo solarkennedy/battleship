@@ -1,10 +1,12 @@
 all: generate6x6 generate8x8
 
 generate8x8: generate8x8.c
-	gcc -O3 -pg -o $@ $< -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient
+# Add a -pg to do profileing
+	gcc -O3 -o $@ $< -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient -lpthread
 
 generate6x6: generate6x6.c
-	gcc -O3 -pg -o $@ $< -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient
+# Add a -pg to do profileing
+	gcc -O3 -o $@ $< -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient -lpthread
  
 .PHONY: clean
  

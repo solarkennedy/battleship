@@ -4,7 +4,7 @@
 #include <pthread.h>
 #include "functions.h"
 
-#define SIZEOFBOARD 8
+#define SIZEOFBOARD 10
 #define SIZEOFBOARDX2  SIZEOFBOARD * 2
 
 int Battleships = 0;
@@ -49,12 +49,12 @@ int main()
 {
 int A=0;
 for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
-	if (PlaceCruiser(A,0,boarda)==1){
+	if (PlaceBattleship(A,0,boarda)==1){
 		BoardCopy(boarda,boardb);
         	RecurseB();
 		ZeroArray(boarda);
 		}
-	if (PlaceCruiser(A,1,boarda)==1)
+	if (PlaceBattleship(A,1,boarda)==1)
 		{
 		BoardCopy(boarda,boardb);
 		RecurseB();
@@ -68,12 +68,12 @@ return 0;
 int RecurseB(){
 int A;
 for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
-        if (PlaceDestroyer(A,0,boardb)==1){
+        if (PlaceCruiser(A,0,boardb)==1){
                 BoardCopy(boardb,boardc);
                 RecurseC();
 		BoardCopy(boarda,boardb);
 		}
-        if (PlaceDestroyer(A,1,boardb)==1)
+        if (PlaceCruiser(A,1,boardb)==1)
 		{
                 BoardCopy(boardb,boardc);
                 RecurseC();
@@ -85,12 +85,12 @@ for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
 int RecurseC(){
 int A;
 for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
-        if (PlaceDestroyer(A,0,boardc)==1){
+        if (PlaceCruiser(A,0,boardc)==1){
                 BoardCopy(boardc,boardd);
                 RecurseD();
                 BoardCopy(boardb,boardc);
 		}
-        if (PlaceDestroyer(A,1,boardc)==1){
+        if (PlaceCruiser(A,1,boardc)==1){
                 BoardCopy(boardc,boardd);
                 RecurseD();
                 BoardCopy(boardb,boardc);
@@ -101,35 +101,94 @@ for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
 int RecurseD(){
 int A;
 for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
-        if (PlaceSubmarine(A,boardd)==1){
+        if (PlaceDestroyer(A,0,boardd)==1){
                 BoardCopy(boardd,boarde);
                 RecurseE();
                 BoardCopy(boardc,boardd);
-		}
+                }
+        if (PlaceDestroyer(A,1,boardd)==1){
+                BoardCopy(boardd,boarde);
+                RecurseE();
+                BoardCopy(boardc,boardd);
+                }
 }//End A
-}//End recursed
+}//End recursec
 
 int RecurseE(){
 int A;
 for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
-        if (PlaceSubmarine(A,boarde)==1){
+        if (PlaceDestroyer(A,0,boarde)==1){
                 BoardCopy(boarde,boardf);
                 RecurseF();
                 BoardCopy(boardd,boarde);
-		}
+                }
+        if (PlaceDestroyer(A,1,boarde)==1){
+                BoardCopy(boarde,boardf);
+                RecurseF();
+                BoardCopy(boardd,boarde);
+                }
 }//End A
-}//End recursee
+}//End recursec
 
 int RecurseF(){
 int A;
 for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
-        if (PlaceSubmarine(A,boardf)==1){
-		PrintBoard(boardf);
+        if (PlaceDestroyer(A,0,boardf)==1){
+                BoardCopy(boardf,boardg);
+                RecurseG();
                 BoardCopy(boarde,boardf);
+                }
+        if (PlaceDestroyer(A,1,boardf)==1){
+                BoardCopy(boardf,boardg);
+                RecurseG();
+                BoardCopy(boarde,boardf);
+                }
+}//End A
+}//End recursec
+
+
+int RecurseG(){
+int A;
+for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
+        if (PlaceSubmarine(A,boardg)==1){
+                BoardCopy(boardg,boardh);
+                RecurseH();
+                BoardCopy(boardf,boardg);
 		}
 }//End A
-}//End recursef
+}//End recursed
 
+int RecurseH(){
+int A;
+for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
+        if (PlaceSubmarine(A,boardh)==1){
+                BoardCopy(boardh,boardi);
+                RecurseI();
+                BoardCopy(boardg,boardh);
+                }
+}//End A
+}//End recursed
+
+int RecurseI(){
+int A;
+for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
+        if (PlaceSubmarine(A,boardi)==1){
+                BoardCopy(boardi,boardj);
+                RecurseJ();
+                BoardCopy(boardh,boardi);
+                }
+}//End A
+}//End recursed
+
+int RecurseJ(){
+int A;
+for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
+        if (PlaceSubmarine(A,boardj)==1){
+		PrintBoard(boardj);
+                BoardCopy(boardi,boardj);
+                }
+}//End A
+}//End recursed
 
 
 /*

@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <pthread.h>
-#include <mysql.h>
 #include "functions.h"
 
 #define SIZEOFBOARD 8

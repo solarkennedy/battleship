@@ -1,5 +1,5 @@
 
-#define SIZEOFBOARD 8
+#define SIZEOFBOARD 10
 #define SIZEOFBOARDX2  SIZEOFBOARD * 2
 
 int PrintBoard(int boardtoprint[SIZEOFBOARDX2][SIZEOFBOARDX2])

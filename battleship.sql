@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `6x6` (
 --
 
 CREATE TABLE IF NOT EXISTS `8x8` (
-  `board` varchar(36) NOT NULL,
+  `board` varchar(64) NOT NULL,
   `h` varchar(8) NOT NULL,
   `v` varchar(8) NOT NULL,
   PRIMARY KEY  (`board`),
@@ -54,9 +54,9 @@ CREATE TABLE IF NOT EXISTS `8x8` (
 --
 
 CREATE TABLE IF NOT EXISTS `10x10` (
-  `board` varchar(36) NOT NULL,
-  `h` varchar(8) NOT NULL,
-  `v` varchar(8) NOT NULL,
+  `board` varchar(100) NOT NULL,
+  `h` varchar(10) NOT NULL,
+  `v` varchar(10) NOT NULL,
   PRIMARY KEY  (`board`),
   KEY `h` (`h`,`v`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

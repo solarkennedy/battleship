@@ -55,12 +55,13 @@ for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
         	RecurseB();
 		ZeroArray(boarda);
 		}
-	if (PlaceBattleship(A,1,boarda)==1)
+/*	if (PlaceBattleship(A,1,boarda)==1)
 		{
 		BoardCopy(boarda,boardb);
 		RecurseB();
 		ZeroArray(boarda);
 		}
+*/
 }//End A
 
 return 0;

@@ -7,6 +7,7 @@
 #define SIZEOFBOARD 8
 #define SIZEOFBOARDX2  SIZEOFBOARD * 2
 
+
 int Battleships = 0;
 int Cruisers = 1;
 int Destroyers = 2;
@@ -190,23 +191,3 @@ for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
 }//End A
 }//End recursed
 
-
-/*
-int ConnectToDB(){
-
-   char *server = "localhost";
-   char *user = "root";
-   char *password = "woodall42"; 
-   char *database = "battleship";
-
-   conn = mysql_init(NULL);
-
-   printf("Trying to connect to the db\n");
-   if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0)) {
-      fprintf(stderr, "%s\n", mysql_error(conn));
-   }
-   printf("Done..\n");
-
-}
-
-*/

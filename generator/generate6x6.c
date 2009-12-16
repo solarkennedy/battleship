@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <pthread.h>
 #include "functions.h"
 
-#define SIZEOFBOARD 8
+#define SIZEOFBOARD 6
 #define SIZEOFBOARDX2  SIZEOFBOARD * 2
 
 int Battleships = 0;

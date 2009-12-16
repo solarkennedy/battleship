@@ -1,16 +1,31 @@
+//extern int SIZEOFBOARD, SIZEOFBOARDX2;
 
 #define SIZEOFBOARD 10
 #define SIZEOFBOARDX2  SIZEOFBOARD * 2
 
+
+/*
+Cheat Sheet
+0 = Unfilled Empty
+1 = Water
+
+3 = ^
+4 = v
+5 = <
+6 = >
+
+8 = inside a ship
+9 = Submarine
+
+*/
+
 int PrintBoard(int boardtoprint[SIZEOFBOARDX2][SIZEOFBOARDX2])
 {
+int H,V;
+
 	char boardstring[((SIZEOFBOARD * SIZEOFBOARD))+1];
-	//char boardstring[37] = {48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,48,0};
-//	printf("we have a good board\n");
-	char vcounter[SIZEOFBOARD+1] = {48,48,48,48,48,48,48,48,0}; //Ascii for 0
-	char hcounter[SIZEOFBOARD+1] = {48,48,48,48,48,48,48,48,0};
-	int H;
-	int V;
+	char hcounter[SIZEOFBOARD+1] = "000000";
+	char vcounter[SIZEOFBOARD+1] = "000000";
 	for (H=0; H<SIZEOFBOARD; H++)
 	{
 		for (V=0;V<SIZEOFBOARD;V++)
@@ -18,28 +33,15 @@ int PrintBoard(int boardtoprint[SIZEOFBOARDX2][SIZEOFBOARDX2])
 			if (boardtoprint[V][H] == 0)
 				boardtoprint[V][H] = 1;
 			printf("%d", boardtoprint[V][H]);
-			if (boardtoprint[H][V] != 1)
+			if (boardtoprint[V][H] != 1)
 			{
 				vcounter[H] += 1;
 				hcounter[V] += 1;
 			}
-			boardstring[V*SIZEOFBOARD+H] = boardtoprint[H][V] + 49;
 		}
-//		printf("\n");
 	}	
-//	printf("%s,%s,%s\n", boardstring,vcounter,hcounter);
-//	printf("The boardstring is: %s\n", boardstring);
-//	printf("The horizontal sum is: %s\n", vcounter);
-//	printf("The vertical sum is: %s\n", hcounter);
 	printf(",%s,%s\n", vcounter,hcounter ) ;
-//	char querystring[256];
-/*	snprintf(querystring, sizeof(querystring), "REPLACE INTO `battleship`.`6x6` (`board` ,`h` ,`v`)VALUES ('%s', '%s', '%s');", boardstring, hcounter, vcounter);
-	if (mysql_query(conn, querystring)) 
-	      fprintf(stderr, "%s\n", mysql_error(conn));
-*/
-//	printf("\n\n");
-
-}
+}//end printboard
 
 
 int PlaceBattleship(int Where, int Rotation, int board[SIZEOFBOARDX2][SIZEOFBOARDX2]){
@@ -74,8 +76,9 @@ int InsertBattleship(int Where, int Rotation, int board[SIZEOFBOARDX2][SIZEOFBOA
 		board[H-1][V+1] = board[H][V+1] = board[H+1][V+1] = board[H+2][V+1] = board[H+3][V+1] = board[H+4][V+1] = 1;
 		board[H-1][V]  = board[H+4][V] = 1;
 		board[H-1][V-1] = board[H][V-1] = board[H+1][V-1] = board[H+2][V-1] = board[H+3][V-1] = board[H+4][V-1] = 1;
-		board[H][V] = board[H+3][V] = 2;
-		board[H+1][V] = board[H+2][V] = 3;
+		board[H][V] = 5;
+		board[H+3][V] = 6;
+		board[H+1][V] = board[H+2][V] = 8;
 		return 1;
 	}
 	else if (Rotation == 1)
@@ -83,8 +86,9 @@ int InsertBattleship(int Where, int Rotation, int board[SIZEOFBOARDX2][SIZEOFBOA
 		board[H-1][V-1] = board[H][V-1] = board[H+1][V-1] = 1;
 		board[H-1][V] = board[H+1][V] = board[H-1][V+1] = board[H+1][V+1] = board[H-1][V+2] = board[H+1][V+2] = board[H-1][V+3] = board[H+1][V+3] = 1;
 		board[H-1][V+4] = board[H][V+4] = board[H+1][V+4] = 1;
-		board[H][V] = board[H][V+3] = 2;
-		board[H][V+1] = board[H][V+2] = 3;
+		board[H][V] = 3;
+		board[H][V+3] = 4;
+		board[H][V+1] = board[H][V+2] = 8;
 		return 1;
 	}
 	else
@@ -126,8 +130,9 @@ int InsertCruiser(int Where, int Rotation, int board[SIZEOFBOARDX2][SIZEOFBOARDX
                 board[H-1][V+1] = board[H][V+1] = board[H+1][V+1] = board[H+2][V+1] = board[H+3][V+1] = 1;
                 board[H-1][V]  = board[H+3][V] = 1;
                 board[H-1][V-1] = board[H][V-1] = board[H+1][V-1] = board[H+2][V-1] = board[H+3][V-1] = 1; //Water
-                board[H][V] = board[H+2][V] = 2; //Ship ends
-                board[H+1][V] = 3; //ship middle
+                board[H][V] = 5;
+		board[H+2][V] = 6; //Ship ends
+                board[H+1][V] = 8; //ship middle
 		return 1;
 	}
         else if (Rotation == 1)
@@ -135,8 +140,9 @@ int InsertCruiser(int Where, int Rotation, int board[SIZEOFBOARDX2][SIZEOFBOARDX
                 board[H-1][V-1] = board[H][V-1] = board[H+1][V-1] = 1;
                 board[H-1][V] = board[H+1][V] = board[H-1][V+1] = board[H+1][V+1] = board[H-1][V+2] = board[H+1][V+2] = 1;
                 board[H-1][V+3] = board[H][V+3] = board[H+1][V+3] = 1;
-                board[H][V] = board[H][V+2] = 2;
-                board[H][V+1] = 3;
+                board[H][V] = 3;
+		board[H][V+2] = 4;
+                board[H][V+1] = 8;
 		return 1;
 	}
 	else {
@@ -179,7 +185,8 @@ int InsertDestroyer(int Where, int Rotation, int board[SIZEOFBOARDX2][SIZEOFBOAR
                 board[H-1][V+1] = board[H][V+1] = board[H+1][V+1] = board[H+2][V+1] = 1;
                 board[H-1][V]  = board[H+2][V] = 1;
                 board[H-1][V-1] = board[H][V-1] = board[H+1][V-1] = board[H+2][V-1] = 1; //Water
-                board[H][V] = board[H+1][V] = 2; //Ship ends
+                board[H][V] = 5;
+		board[H+1][V] = 6; //Ship ends
 		return 1;
         }
 	else if (Rotation ==1)
@@ -188,7 +195,8 @@ int InsertDestroyer(int Where, int Rotation, int board[SIZEOFBOARDX2][SIZEOFBOAR
                 board[H-1][V-1] = board[H][V-1] = board[H+1][V-1] = 1;
                 board[H-1][V] = board[H+1][V] = board[H-1][V+1] = board[H+1][V+1] = 1;
                 board[H-1][V+2] = board[H][V+2] = board[H+1][V+2] = 1;
-                board[H][V] = board[H][V+1] = 2;
+                board[H][V] = 3;
+		board[H][V+1] = 4;
 		return 1;
 	}
 	else
@@ -215,7 +223,7 @@ int InsertSubmarine(int Where, int board[SIZEOFBOARDX2][SIZEOFBOARDX2])
         board[H-1][V+1] = board[H][V+1] = board[H+1][V+1] = 1;
         board[H-1][V]  = board[H+1][V] = 1;
         board[H-1][V-1] = board[H][V-1] = board[H+1][V-1] = 1; //Water
-        board[H][V] = 4; //Ship ends
+        board[H][V] = 9; //Ship ends
 	return 1;
 }
 

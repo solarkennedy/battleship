@@ -24,8 +24,8 @@ int PrintBoard(int boardtoprint[SIZEOFBOARDX2][SIZEOFBOARDX2])
 int H,V;
 
 	char boardstring[((SIZEOFBOARD * SIZEOFBOARD))+1];
-	char hcounter[SIZEOFBOARD+1] = "000000";
-	char vcounter[SIZEOFBOARD+1] = "000000";
+	char hcounter[SIZEOFBOARD+1] = "00000000";
+	char vcounter[SIZEOFBOARD+1] = "00000000";
 	for (H=0; H<SIZEOFBOARD; H++)
 	{
 		for (V=0;V<SIZEOFBOARD;V++)
@@ -55,12 +55,16 @@ int PlaceBattleship(int Where, int Rotation, int board[SIZEOFBOARDX2][SIZEOFBOAR
 			}
 		}
 	}
-	else{
+	else if (Rotation == 1){
 		if (V <= (SIZEOFBOARD - 4)){
 			if (board[H][V] == 0 && board[H][V+1] == 0 && board[H][V+2] == 0 && board[H][V+3] == 0){
 				return InsertBattleship(Where,1,board);
 			}
 		}
+	}
+	else {
+		printf("I have no idea what direction you want me to go, you said %d \n",Rotation);
+		exit(1);
 	}
 	return 0;
 }//End Place Battleship

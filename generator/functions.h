@@ -1,6 +1,6 @@
 #include "functions.c"
 
-#define SIZEOFBOARD 10
+#define SIZEOFBOARD 8
 #define SIZEOFBOARDX2  SIZEOFBOARD * 2
 
 

@@ -23,45 +23,43 @@ int boardh[SIZEOFBOARDX2][SIZEOFBOARDX2];
 int boardi[SIZEOFBOARDX2][SIZEOFBOARDX2];
 int boardj[SIZEOFBOARDX2][SIZEOFBOARDX2];
 
-/*
-//int boarda[12][12] ={{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0}};
-int boardb[12][12] ={{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0}};
-int boardc[12][12] ={{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0}};
-int boardd[12][12] ={{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0}};
-int boarde[12][12] ={{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0}};
-int boardf[12][12] ={{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0}};
-*/
-
 //Prottypes
-int main(void);
 int RecurseB(void);
 int RecurseC(void);
 int RecurseD(void);
 int RecurseE(void);
 int RecurseF(void);
 
+int DirectionA;
+int DirectionB;
+int DirectionC;
+int DirectionD;
+int DirectionE;
+int DirectionF;
 
 
 
-
-
-
-int main()
+int main(int argc,char *argv[])
 {
+if ( argc != 7 ){
+	printf("Dude, you need 6 arguments, like this: generate8x8 0 0 0 0 0 0\n");
+	exit(1);
+} else {
+	DirectionA = argv[1][0]-48;
+	DirectionB = argv[2][0]-48;
+	DirectionC = argv[3][0]-48;
+	DirectionD = argv[4][0]-48;
+	DirectionE = argv[5][0]-48;
+	DirectionF = argv[6][0]-48;
+}
+
 int A=0;
 for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
-	if (PlaceBattleship(A,0,boarda)==1){
+	if (PlaceBattleship(A,DirectionA,boarda)==1){
 		BoardCopy(boarda,boardb);
         	RecurseB();
 		ZeroArray(boarda);
 		}
-/*	if (PlaceBattleship(A,1,boarda)==1)
-		{
-		BoardCopy(boarda,boardb);
-		RecurseB();
-		ZeroArray(boarda);
-		}
-*/
 }//End A
 
 return 0;
@@ -70,13 +68,7 @@ return 0;
 int RecurseB(){
 int A;
 for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
-        if (PlaceCruiser(A,0,boardb)==1){
-                BoardCopy(boardb,boardc);
-                RecurseC();
-		BoardCopy(boarda,boardb);
-		}
-        if (PlaceCruiser(A,1,boardb)==1)
-		{
+        if (PlaceCruiser(A,DirectionB,boardb)==1){
                 BoardCopy(boardb,boardc);
                 RecurseC();
 		BoardCopy(boarda,boardb);
@@ -87,12 +79,7 @@ for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
 int RecurseC(){
 int A;
 for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
-        if (PlaceCruiser(A,0,boardc)==1){
-                BoardCopy(boardc,boardd);
-                RecurseD();
-                BoardCopy(boardb,boardc);
-		}
-        if (PlaceCruiser(A,1,boardc)==1){
+        if (PlaceCruiser(A,DirectionC,boardc)==1){
                 BoardCopy(boardc,boardd);
                 RecurseD();
                 BoardCopy(boardb,boardc);
@@ -103,28 +90,19 @@ for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
 int RecurseD(){
 int A;
 for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
-        if (PlaceDestroyer(A,0,boardd)==1){
+        if (PlaceDestroyer(A,DirectionD,boardd)==1){
                 BoardCopy(boardd,boarde);
                 RecurseE();
                 BoardCopy(boardc,boardd);
                 }
-        if (PlaceDestroyer(A,1,boardd)==1){
-                BoardCopy(boardd,boarde);
-                RecurseE();
-                BoardCopy(boardc,boardd);
-                }
+
 }//End A
 }//End recursec
 
 int RecurseE(){
 int A;
 for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
-        if (PlaceDestroyer(A,0,boarde)==1){
-                BoardCopy(boarde,boardf);
-                RecurseF();
-                BoardCopy(boardd,boarde);
-                }
-        if (PlaceDestroyer(A,1,boarde)==1){
+        if (PlaceDestroyer(A,DirectionE,boarde)==1){
                 BoardCopy(boarde,boardf);
                 RecurseF();
                 BoardCopy(boardd,boarde);
@@ -135,12 +113,7 @@ for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
 int RecurseF(){
 int A;
 for (A=0; A<(SIZEOFBOARD * SIZEOFBOARD); A++){
-        if (PlaceDestroyer(A,0,boardf)==1){
-                BoardCopy(boardf,boardg);
-                RecurseG();
-                BoardCopy(boarde,boardf);
-                }
-        if (PlaceDestroyer(A,1,boardf)==1){
+        if (PlaceDestroyer(A,DirectionF,boardf)==1){
                 BoardCopy(boardf,boardg);
                 RecurseG();
                 BoardCopy(boarde,boardf);

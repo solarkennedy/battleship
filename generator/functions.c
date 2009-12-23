@@ -1,6 +1,6 @@
 //extern int SIZEOFBOARD, SIZEOFBOARDX2;
 
-#define SIZEOFBOARD 8
+#define SIZEOFBOARD 6
 #define SIZEOFBOARDX2  SIZEOFBOARD * 2
 
 
@@ -22,17 +22,17 @@ Cheat Sheet
 int PrintBoard(int boardtoprint[SIZEOFBOARDX2][SIZEOFBOARDX2])
 {
 int H,V;
-
+int temp;
 	char boardstring[((SIZEOFBOARD * SIZEOFBOARD))+1];
-	char hcounter[SIZEOFBOARD+1] = "00000000";
-	char vcounter[SIZEOFBOARD+1] = "00000000";
+	char hcounter[SIZEOFBOARD+1] = "000000";
+	char vcounter[SIZEOFBOARD+1] = "000000";
 	for (H=0; H<SIZEOFBOARD; H++)
 	{
 		for (V=0;V<SIZEOFBOARD;V++)
 		{
 			if (boardtoprint[V][H] == 0)
 				boardtoprint[V][H] = 1;
-			printf("%d", boardtoprint[V][H]);
+			boardstring[H*6+V] = boardtoprint[V][H];		
 			if (boardtoprint[V][H] != 1)
 			{
 				vcounter[H] += 1;
@@ -40,7 +40,8 @@ int H,V;
 			}
 		}
 	}	
-	printf(",%s,%s\n", vcounter,hcounter ) ;
+	printf("%s,%s,%s\n",boardstring,vcounter,hcounter ) ;
+
 }//end printboard
 
 
@@ -232,7 +233,7 @@ int InsertSubmarine(int Where, int board[SIZEOFBOARDX2][SIZEOFBOARDX2])
 }
 
 int ZeroArray(int board[SIZEOFBOARDX2][SIZEOFBOARDX2]){
-	int H, V;
+/*	int H, V;
         for (H=0; H<SIZEOFBOARDX2; H++)
         {
                 for (V=0;V<SIZEOFBOARDX2;V++)
@@ -240,6 +241,9 @@ int ZeroArray(int board[SIZEOFBOARDX2][SIZEOFBOARDX2]){
                       board[H][V] = 0;
                 }
         }
+*/
+//board[SIZEOFBOARDX2][SIZEOFBOARDX2] = {{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0}};
+memset(board, 0, sizeof(int) * SIZEOFBOARDX2 * SIZEOFBOARDX2);
 }
 
 

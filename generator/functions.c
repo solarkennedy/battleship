@@ -1,4 +1,4 @@
-//extern int SIZEOFBOARD, SIZEOFBOARDX2;
+//extern int SIZEOFBOARD, SIZEOFBOARDX1;
 
 #define SIZEOFBOARD 8
 #define SIZEOFBOARDX2  SIZEOFBOARD * 2
@@ -21,9 +21,8 @@ Cheat Sheet
 
 int PrintBoard(int boardtoprint[SIZEOFBOARDX2][SIZEOFBOARDX2])
 {
-int H,V;
-int temp;
-	char boardstring[((SIZEOFBOARD * SIZEOFBOARD))+1];
+	int H,V;
+	char boardstring[((SIZEOFBOARD * SIZEOFBOARD))+1]="0000000000000000000000000000000000000000000000000000000000000000";
 	char hcounter[SIZEOFBOARD+1] = "00000000";
 	char vcounter[SIZEOFBOARD+1] = "00000000";
 	for (H=0; H<SIZEOFBOARD; H++)
@@ -32,8 +31,7 @@ int temp;
 		{
 			if (boardtoprint[V][H] == 0)
 				boardtoprint[V][H] = 1;
-			boardstring[H*6+V] = boardtoprint[V][H]+48;		
-//			putchar(boardtoprint[V][H]+48);
+			boardstring[H*SIZEOFBOARD+V] = boardtoprint[V][H]+48;		
 			if (boardtoprint[V][H] != 1)
 			{
 				vcounter[H]++;
@@ -41,7 +39,7 @@ int temp;
 			}
 		}
 	}	
-	printf("%s,%s,%s\n",boardstring,vcounter,hcounter ) ;
+	printf("%s,%s,%s\n",boardstring,vcounter,hcounter);
 
 }//end printboard
 

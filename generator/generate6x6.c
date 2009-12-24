@@ -3,7 +3,7 @@
 #include <string.h>
 #include "functions.h"
 
-#define SIZEOFBOARD 6
+#define SIZEOFBOARD 8
 #define SIZEOFBOARDX2  SIZEOFBOARD * 2
 
 int Battleships = 0;

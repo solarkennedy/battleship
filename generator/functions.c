@@ -41,7 +41,7 @@ int temp;
 			}
 		}
 	}	
-	printf("%s,%s,%s\n",boardstring,vcounter,hcounter ) ;
+//	printf("%s,%s,%s\n",boardstring,vcounter,hcounter ) ;
 
 }//end printboard
 
